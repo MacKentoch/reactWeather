@@ -1,6 +1,7 @@
 .day_weather__box_container {
   background-color: #2780e3;
   border-color: #2780e3;
+  height : 190px;
 }
 
 .day_weather__box_text {
@@ -8,10 +9,12 @@
 }
 
 .day_weather__box_day_name {
+  height: 30px;
   font-weight: 500;
 }
 
 .day_weather__box_state {
+  height: 25px;
   margin: {
     left: 20px;
   }
