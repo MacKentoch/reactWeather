@@ -6,6 +6,8 @@ import weatherAPI   from '../../weatherAPI';
 const router = express.Router();
 
 router.get('/weatherdata/:day', (req, res, next) => {
+  console.info(`request for day: ${req.params.day}`);
+
   if (req.params.day === '1') {
     // gives data weather for today
     const day0        = new Date(Date.now());

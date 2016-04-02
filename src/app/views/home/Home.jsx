@@ -2,7 +2,6 @@
 
 import React                from 'react';
 import classNames           from 'classnames';
-import _                    from 'lodash';
 import ViewContainer        from '../../containers/ViewContainer/ViewContainer.jsx';
 import WeekSection          from '../../components/weekSection/WeekSection.jsx';
 import { PromisedTimeout }  from '../../services/PromisedTimeout';
@@ -28,36 +27,45 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+
+    let weatherData = [];
     // fetch weather data
-    DAYS_TO_FETCH.map((dayNum) => {
-      requestWeatherData.loadWeatherData(
-        dayNum,
-        (data) => this.addOneDayToWeatherDataState(data, dayNum),
-        (error) => console.dir(error)
-      );
-    });
+    requestWeatherData
+      .ajax(`${requestWeatherData.baseUrl}${1}`)
+      .then((data) => {
+        let response = JSON.parse(data);
+        weatherData.push(requestWeatherData.shapeResponseObject(response.hits.hits, 1));
+        return requestWeatherData.ajax(`${requestWeatherData.baseUrl}${2}`);
+      })
+      .then((data) => {
+        let response = JSON.parse(data);
+        weatherData.push(requestWeatherData.shapeResponseObject(response.hits.hits, 2));
+        return requestWeatherData.ajax(`${requestWeatherData.baseUrl}${3}`);
+      })
+      .then((data) => {
+        let response = JSON.parse(data);
+        weatherData.push(requestWeatherData.shapeResponseObject(response.hits.hits, 3));
+        return requestWeatherData.ajax(`${requestWeatherData.baseUrl}${4}`);
+      })
+      .then((data) => {
+        let response = JSON.parse(data);
+        weatherData.push(requestWeatherData.shapeResponseObject(response.hits.hits, 4));
+        console.dir(weatherData);
+        this.setState({
+          weatherData: [].concat(weatherData)
+        });
+      });
+
+    // DAYS_TO_FETCH.map((dayNum) => {
+    //   requestWeatherData.loadWeatherData(
+    //     dayNum,
+    //     (data) => this.addOneDayToWeatherDataState(data, dayNum),
+    //     (error) => console.dir(error)
+    //   );
+    // });
+
     // launch delayed animations for weekBoxes components
     this.processWeekBoxesAnimationState();
-  }
-
-  addOneDayToWeatherDataState(oneDayData, dayNum) {
-    let newWeatherDataState = [].concat(this.state.weatherData);
-    newWeatherDataState.push(oneDayData);
-
-    newWeatherDataState.sort((a, b) => a.rawDate - b.rawDate);
-    
-    newWeatherDataState = this.reorderData(newWeatherDataState);
-    this.setState({
-      weatherData: [].concat(newWeatherDataState)
-    });
-  }
-
-  reorderData(arrayData) {
-    let sortedArray = [].concat(arrayData);
-    _.sortBy(sortedArray, (o) => {
-      return o.rawDate;
-    });
-    return sortedArray;
   }
 
   processWeekBoxesAnimationState() {

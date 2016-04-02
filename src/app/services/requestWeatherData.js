@@ -15,26 +15,38 @@ class ClassRequestWeatherData {
 
   loadWeatherData(dayN, successCallBack, errorCallBack) {
     const fullURL = `${this.baseUrl}${dayN}`;
-
     $.ajax({
       url       : fullURL,
       dataType  : 'json',
       cache     : false,
-      success   : (data) => successCallBack({ data: this.shapeResponseObject(data.hits.hits) }),
+      success   : (data) => {
+        successCallBack({ data: this.shapeResponseObject(data.hits.hits) });
+      },
       error     : (xhr, status, err) => errorCallBack({ error: err.toString() })
     });
   }
-  
+
+  ajax(url) {
+    return new Promise((resolve, reject) => {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        resolve(this.responseText);
+      };
+      xhr.onerror = reject;
+      xhr.open('GET', url);
+      xhr.send();
+    });
+  }
+
   shapeResponseObject(rawData, dayN) {
     if (rawData) {
       if (!rawData[0]) {
-        return this.getNoDataObject(dayN);
+        return this.getNoDataObject();
       }
       const data = rawData[0];
       const weatherData = {
         dayName:      dayN === 1 ? 'Today' : data._source.dayStr,
-        fullDate:     new Date(data._source.fullDate),
-        rawData:      data._source.fullDate,
+        fullDate:     new Date(data._source.fullDate) + '',
         nowIsNight:   this.isNowNightTime(), // to show day or night comment depending current time
         commentDay:   data._source.commentDay,
         commentNight: data._source.commentNight,
