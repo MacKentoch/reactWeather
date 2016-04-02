@@ -15,7 +15,7 @@ Simple Weather app Powered by ReactJS (ES6)
 
 ## back-end
 
- - `NodeJS`
+ - `NodeJS` (ES6)
  - `elasticsearch` (*my first time use*)
 
 ## setup
@@ -30,8 +30,9 @@ Simple Weather app Powered by ReactJS (ES6)
 npm run serve
 ```
 
-The application launches at :
+**Then in your browser go:**
  - `http://localhost:3000/`
+
 
 
 _INFO : elasticsearch server is connected to :_
@@ -42,7 +43,7 @@ _INFO : elasticsearch server is connected to :_
 - `http://localhost:3000/api/weatherdata/:day`
  - retrieve 1 day weather data — `day` parameter is a number 1 to 4 (*1 is today, 2 is tomorrow etc...*)
 - `http://localhost:3000/api/weatherdata`
- - retrieve all month (*32 days = today + 4 forward and 28 days before today*) weather data
+ - retrieve all current month (*32 days = today + 4 next days + 28 days before today*) weather data
 
  ## Note : IDE
 
