@@ -33599,6 +33599,8 @@
 	var DayWeatherBox = function DayWeatherBox(props) {
 	  var containerBoxClasses = props.columnClass + ' ' + props.animationClass;
 	  var sundayStyle = { color: '#F1A9A0' };
+	  var saturdayStyle = { color: '#CCCCCC' };
+
 	  return _react2.default.createElement(
 	    'div',
 	    { className: containerBoxClasses },
@@ -33612,7 +33614,7 @@
 	          'h3',
 	          {
 	            className: 'day_weather__box_text day_weather__box_day_name',
-	            style: props.weather.dayName === 'Sunday' ? sundayStyle : {} },
+	            style: props.weather.dayName === 'Sunday' ? sundayStyle : props.weather.dayName === 'Saturday' ? saturdayStyle : {} },
 	          props.weather.dayName
 	        ),
 	        _react2.default.createElement(

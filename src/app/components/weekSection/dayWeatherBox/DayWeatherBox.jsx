@@ -4,15 +4,17 @@ import React              from 'react';
 import TemperatureBox     from './temperatureBox/TemperatureBox.jsx';
 
 const DayWeatherBox = (props) => {
-  const containerBoxClasses  = `${props.columnClass} ${props.animationClass}`;
-  const sundayStyle = {color: '#F1A9A0'};
+  const containerBoxClasses   = `${props.columnClass} ${props.animationClass}`;
+  const sundayStyle           = {color: '#F1A9A0'};
+  const saturdayStyle         = {color: '#CCCCCC'};
+
   return (
     <div className={containerBoxClasses}>
       <div className="thumbnail day_weather__box_container">
         <div className="caption">
           <h3
             className="day_weather__box_text day_weather__box_day_name"
-            style={props.weather.dayName === 'Sunday' ? sundayStyle : {}}>
+            style={props.weather.dayName === 'Sunday' ? sundayStyle : (props.weather.dayName === 'Saturday' ? saturdayStyle: {}) }>
             {props.weather.dayName}
           </h3>
           <h4 className="day_weather__box_text day_weather__box_state">
