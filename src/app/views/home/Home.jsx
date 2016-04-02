@@ -7,7 +7,6 @@ import WeekSection          from '../../components/weekSection/WeekSection.jsx';
 import { PromisedTimeout }  from '../../services/PromisedTimeout';
 import requestWeatherData   from '../../services/requestWeatherData';
 
-const DAYS_TO_FETCH  =[1, 2, 3, 4];
 
 class Home extends React.Component {
   constructor(props) {
@@ -27,7 +26,6 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-
     let weatherData = [];
     // fetch weather data
     requestWeatherData
@@ -50,20 +48,10 @@ class Home extends React.Component {
       .then((data) => {
         let response = JSON.parse(data);
         weatherData.push(requestWeatherData.shapeResponseObject(response.hits.hits, 4));
-        console.dir(weatherData);
         this.setState({
           weatherData: [].concat(weatherData)
         });
       });
-
-    // DAYS_TO_FETCH.map((dayNum) => {
-    //   requestWeatherData.loadWeatherData(
-    //     dayNum,
-    //     (data) => this.addOneDayToWeatherDataState(data, dayNum),
-    //     (error) => console.dir(error)
-    //   );
-    // });
-
     // launch delayed animations for weekBoxes components
     this.processWeekBoxesAnimationState();
   }

@@ -75,7 +75,7 @@ class WeekSection extends React.Component {
       <WhiteSection id="weekSection">
         <div className="row titleWeatherBoxesSection">
           <div className="col-xs-12 ">
-            <h1 className="text-center homeHeaderSectionTitle">
+            <h1 className="text-center titleWeatherBoxesText">
               {this.props.title}
             </h1>
           </div>
@@ -114,7 +114,6 @@ WeekSection.defaultProps = {
   title             : '',
   triggerAnimation  : false,
   animationDelay    : 1000
-
 };
 
 export default WeekSection;

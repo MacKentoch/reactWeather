@@ -1,7 +1,5 @@
 'use strict';
 
-import $      from 'jquery';
-
 const DEFAULT_API_BASE_URL = 'http://localhost:3000/api/weatherdata/';
 
 class ClassRequestWeatherData {
@@ -11,19 +9,6 @@ class ClassRequestWeatherData {
 
   init() {
     this.baseUrl = DEFAULT_API_BASE_URL;
-  }
-
-  loadWeatherData(dayN, successCallBack, errorCallBack) {
-    const fullURL = `${this.baseUrl}${dayN}`;
-    $.ajax({
-      url       : fullURL,
-      dataType  : 'json',
-      cache     : false,
-      success   : (data) => {
-        successCallBack({ data: this.shapeResponseObject(data.hits.hits) });
-      },
-      error     : (xhr, status, err) => errorCallBack({ error: err.toString() })
-    });
   }
 
   ajax(url) {
