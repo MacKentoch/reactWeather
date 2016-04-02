@@ -33399,9 +33399,17 @@
 	      }
 
 	      var noDataAvailable = _react2.default.createElement(
-	        'p',
-	        null,
-	        'sorry no data available'
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-xs-12' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'sorry no data available'
+	          )
+	        )
 	      );
 	      var dayWeatherBoxes = this.props.weatherData.map(function (oneDayData, dayIndex) {
 	        var dayAnimationClass = '';
@@ -33429,7 +33437,7 @@
 	        return _react2.default.createElement(_DayWeatherBox2.default, {
 	          key: dayIndex,
 	          columnClass: boxesColClass,
-	          weather: oneDayData.data,
+	          weather: oneDayData,
 	          triggerAnimation: _this2.props.triggerAnimation,
 	          animationDelay: _this2.props.triggerAnimation,
 	          animationClass: dayAnimationClass

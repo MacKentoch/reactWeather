@@ -24,7 +24,15 @@ class WeekSection extends React.Component {
       boxesColClass = 'col-md-3';
     }
 
-    const noDataAvailable = (<p>sorry no data available</p>);
+    const noDataAvailable = (
+      <div className="row">
+        <div className="col-xs-12">
+          <h1>
+            sorry no data available
+          </h1>
+        </div>
+      </div>
+      );
     const dayWeatherBoxes = this.props.weatherData.map((oneDayData, dayIndex) => {
       let dayAnimationClass = '';
 
@@ -52,7 +60,7 @@ class WeekSection extends React.Component {
         <DayWeatherBox
           key={dayIndex}
           columnClass={boxesColClass}
-          weather={oneDayData.data}
+          weather={oneDayData}
           triggerAnimation={this.props.triggerAnimation}
           animationDelay={this.props.triggerAnimation}
           animationClass={dayAnimationClass}
@@ -105,7 +113,7 @@ WeekSection.propTypes = {
 WeekSection.defaultProps = {
   title             : '',
   triggerAnimation  : false,
-  animationDelay    : 1000,
+  animationDelay    : 1000
 
 };
 
