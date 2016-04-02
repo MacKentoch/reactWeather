@@ -19,11 +19,6 @@ import weatherDataRoute from './server/routes/weatherdata';
 
 const app           = express();
 
-
-app.engine('ejs', engine);
-app.set('views', path.join(__dirname, 'server/views'));
-app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +40,7 @@ app.use((req, res, next) => {
 if (app.get('env') === 'development') {
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
       message: err.message,
       error: err
     });

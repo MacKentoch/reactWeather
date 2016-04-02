@@ -1,5 +1,10 @@
-Simple Weather app Powered by ReactJS (ES6)
+Simple Weather app Powered by ReactJS+NodeJS+ExpressJS+Elasticsearch (ES6)
 ==========
+
+Give you the weather in London for 4 days until now.
+
+Using this service: http://wxdata.weather.com/wxdata/weather/local/UKXX0085?cc=*&unit=m&dayf=4.
+
 
 ## build chain
 
@@ -7,7 +12,6 @@ Simple Weather app Powered by ReactJS (ES6)
  - babel 6+ (*client and server entirely written in ES6/ES2015*)
 
 ## front-end
-
 
  - ReactJS (ES6)
  - react-router (*Single Page Application*)
@@ -22,25 +26,48 @@ Simple Weather app Powered by ReactJS (ES6)
 
 *source files in `server/` folder*
 
-## setup
+## setup and launch
 
-**Be sure to have previously installed on your machine:**
- - NodeJS  (*node 4.2.x, should be ok with node 0.10.x but didn't test it*)
+**1. Be sure to have previously installed on your machine:**
+ - NodeJS  (*node 4.2.x, should be ok with node 0.10.x but I don't have it*)
  - elastic search  (*I used v2.3.0*)
 
-**launch server:**
+
+ **2. Then, just install all packages by:**
+
+ ```bash
+npm install
+ ```
+
+**3. launch server:**
 
 ```bash
 npm run serve
 ```
 
-**Then in your browser go:**
+**4. Then in your browser go:**
  - `http://localhost:3000/`
 
 
 _INFO : elasticsearch server is connected to :_
 - `http://localhost:9200/`
 
+## Build
+
+- DEV build
+```bash
+npm run dev
+```
+- DEV hot-reload
+```bash
+npm run hot-reload
+```
+*Note : will need to mock server API requests*
+
+- Production buid (*ReactJS will be optimized: NODE_ENV=production*)
+```bash
+npm run prod
+```
 
 **API to play with Postman:**
 - `http://localhost:3000/api/weatherdata/:day`
@@ -52,6 +79,6 @@ _INFO : elasticsearch server is connected to :_
 
 After balancing between SublimeText and VSCode I better use Atom.
 
-When developing in ReactJS (*not only ReactJS by the way*) even without installing facebook Nuclide I feel like I have all tools I need.
+When developing in ReactJS (*not only ReactJS by the way*) even without installing Facebook Nuclide I feel like I have all tools I need.
 
 The most amazing package that makes the difference is `terminal plus` = integrated terminal in Atom.

@@ -5,7 +5,7 @@ import {
   Router,
   Route,
   IndexRoute,
-  // browserHistory
+  // browserHistory,
   hashHistory
 }                   from 'react-router';
 import App          from '../containers/app/App.jsx';
