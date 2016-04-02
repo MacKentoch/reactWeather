@@ -2,13 +2,41 @@
 
 import React                from 'react';
 import ViewContainer        from '../../containers/ViewContainer/ViewContainer.jsx';
+import classNames           from 'classnames';
+import { PromisedTimeout }  from '../../services/PromisedTimeout';
 
 class About extends React.Component {
   constructor(props) {
     super(props);
+    this.init();
+  }
+
+  init() {
+    this.state = {
+      animated:         true,
+      jumbotronAnimate: false
+    };
+  }
+
+  componentDidMount() {
+    PromisedTimeout
+      .delay(500)
+      .then(() => {
+        this.setState({
+          jumbotronAnimate: true
+        });
+      });
   }
 
   render() {
+    const jumbotronClass = classNames({
+      'animated':             this.state.animated,
+      'invisible':            !this.state.jumbotronAnimate,
+      'zoomIn':               this.state.jumbotronAnimate,
+      'jumbotron':            true,
+      'about_view_jumbotron': true
+    });
+
     return (
       <div
         id="homeView"
@@ -17,7 +45,7 @@ class About extends React.Component {
           isAnimated={true}>
           <div className="row">
             <div className="col-xs-12">
-              <div className="jumbotron about_view_jumbotron">
+              <div className={jumbotronClass}>
                 <h1>
                   Why this view?
                 </h1>

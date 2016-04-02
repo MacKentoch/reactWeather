@@ -43757,6 +43757,12 @@
 
 	var _ViewContainer2 = _interopRequireDefault(_ViewContainer);
 
+	var _classnames = __webpack_require__(515);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _PromisedTimeout = __webpack_require__(524);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43771,12 +43777,42 @@
 	  function About(props) {
 	    _classCallCheck(this, About);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(About).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(About).call(this, props));
+
+	    _this.init();
+	    return _this;
 	  }
 
 	  _createClass(About, [{
+	    key: 'init',
+	    value: function init() {
+	      this.state = {
+	        animated: true,
+	        jumbotronAnimate: false
+	      };
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      _PromisedTimeout.PromisedTimeout.delay(500).then(function () {
+	        _this2.setState({
+	          jumbotronAnimate: true
+	        });
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var jumbotronClass = (0, _classnames2.default)({
+	        'animated': this.state.animated,
+	        'invisible': !this.state.jumbotronAnimate,
+	        'zoomIn': this.state.jumbotronAnimate,
+	        'jumbotron': true,
+	        'about_view_jumbotron': true
+	      });
+
 	      return _react2.default.createElement(
 	        'div',
 	        {
@@ -43794,7 +43830,7 @@
 	              { className: 'col-xs-12' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'jumbotron about_view_jumbotron' },
+	                { className: jumbotronClass },
 	                _react2.default.createElement(
 	                  'h1',
 	                  null,
