@@ -8,15 +8,19 @@ Simple Weather app Powered by ReactJS (ES6)
 
 ## front-end
 
+
  - ReactJS (ES6)
  - react-router (*Single Page Application*)
  - bootstrap
  - sass style
 
+*source files in `src/` folder.*
 ## back-end
 
  - `NodeJS` (ES6)
  - `elasticsearch` (*my first time use*)
+
+*source files in `server/` folder*
 
 ## setup
 
@@ -34,7 +38,6 @@ npm run serve
  - `http://localhost:3000/`
 
 
-
 _INFO : elasticsearch server is connected to :_
 - `http://localhost:9200/`
 
@@ -45,6 +48,10 @@ _INFO : elasticsearch server is connected to :_
 - `http://localhost:3000/api/weatherdata`
  - retrieve all current month (*32 days = today + 4 next days + 28 days before today*) weather data
 
- ## Note : IDE
+ ## Note about : IDE
 
-  - atom (*with `terminal plus` = that is just awesome*)
+After balancing between SublimeText and VSCode I better use Atom.
+
+When developing in ReactJS (*not only ReactJS by the way*) even without installing facebook Nuclide I feel like I have all tools I need.
+
+The most amazing package that makes the difference is `terminal plus` = integrated terminal in Atom.
