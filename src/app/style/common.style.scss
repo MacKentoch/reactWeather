@@ -1,0 +1,109 @@
+@import "./app.var.style";
+
+body {
+  background-color: #FFFFFF;
+}
+
+// fix right gap on mobile phone
+html,
+body,
+div.row {
+  margin: {
+    right: 0!important;
+    left: 0!important;
+  }
+    width: 100%;
+}
+
+.divFix {
+  margin: {
+    right: 0!important;
+    left: 0!important;
+  }
+    width: 100%;
+}
+
+a {
+  :hover {
+    cursor : pointer !important;
+  }
+}
+// container
+.containersCustom {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: $CONTAINER_CUSTOM_PADDING_LEFT;
+  padding-right: $CONTAINER_CUSTOM_PADDING_RIGHT;
+}
+
+
+//fix navbar right
+@media (min-width: 768px) {
+  .navbar-right {
+      float: right !important;
+      margin-right: 0px;
+  }
+}
+
+
+// view animations
+.invisible {
+  opacity: 0;
+}
+
+.view-enter {
+  animation: fadeIn 0.5s both ease-in;
+  z-index: 9999;
+ }
+
+.animatedViews {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+//NavigationBar
+
+.navbar-default,
+.navbar-inverse {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(66, 66, 66, 0.33);
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  .navbar-nav {
+    >li {
+      >a {
+        color: rgba(66, 66, 66, 1);
+        &:hover{
+          color: rgba(255, 255, 255, 0.8);
+          cursor: pointer;
+        }
+        &:focus {
+          color: rgba(255, 255, 255, 0.8);
+          cursor: pointer;
+        }
+        &.active {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+  .navbar-brand {
+    color: rgba(66, 66, 66, 1);
+    &:hover {
+      color: rgba(66, 66, 66, 0.8);
+      cursor: pointer;
+    }
+    &:focus{
+      color: rgba(66, 66, 66, 0.8);
+    }
+  }
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #333333;
+}

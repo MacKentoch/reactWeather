@@ -1,0 +1,18 @@
+{
+  "brand"       : {
+    "label"     : "reactWeather",
+    "link"      : "/"
+  },
+  "leftLinks"   : [
+    {
+      "label"     : "Weather",
+      "link"      : "/"
+    },
+    {
+      "label"     : "About",
+      "link"      : "about"
+    }
+  ],
+  "rightLinks"  : [
+  ]
+}
