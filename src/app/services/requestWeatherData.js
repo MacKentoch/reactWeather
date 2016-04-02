@@ -1,4 +1,6 @@
-import $ from 'jquery';
+'use strict';
+
+import $      from 'jquery';
 
 const DEFAULT_API_BASE_URL = 'http://localhost:3000/api/weatherdata/';
 
@@ -8,7 +10,7 @@ class ClassRequestWeatherData {
   }
 
   init() {
-    this.baseUrl    = DEFAULT_API_BASE_URL;
+    this.baseUrl = DEFAULT_API_BASE_URL;
   }
 
   loadWeatherData(dayN, successCallBack, errorCallBack) {
@@ -22,7 +24,7 @@ class ClassRequestWeatherData {
       error     : (xhr, status, err) => errorCallBack({ error: err.toString() })
     });
   }
-
+  
   shapeResponseObject(rawData, dayN) {
     if (rawData) {
       if (!rawData[0]) {
@@ -32,6 +34,7 @@ class ClassRequestWeatherData {
       const weatherData = {
         dayName:      dayN === 1 ? 'Today' : data._source.dayStr,
         fullDate:     new Date(data._source.fullDate),
+        rawData:      data._source.fullDate,
         nowIsNight:   this.isNowNightTime(), // to show day or night comment depending current time
         commentDay:   data._source.commentDay,
         commentNight: data._source.commentNight,
@@ -42,7 +45,7 @@ class ClassRequestWeatherData {
       };
       return weatherData;
     }
-    return this.getNoDataObject(dayN);
+    return this.getNoDataObject();
   }
 
   getNoDataObject() {

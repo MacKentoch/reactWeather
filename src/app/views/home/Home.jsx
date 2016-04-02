@@ -2,6 +2,7 @@
 
 import React                from 'react';
 import classNames           from 'classnames';
+import _                    from 'lodash';
 import ViewContainer        from '../../containers/ViewContainer/ViewContainer.jsx';
 import WeekSection          from '../../components/weekSection/WeekSection.jsx';
 import { PromisedTimeout }  from '../../services/PromisedTimeout';
@@ -31,7 +32,7 @@ class Home extends React.Component {
     DAYS_TO_FETCH.map((dayNum) => {
       requestWeatherData.loadWeatherData(
         dayNum,
-        (data) => this.addOneDayToWeatherDataState(data),
+        (data) => this.addOneDayToWeatherDataState(data, dayNum),
         (error) => console.dir(error)
       );
     });
@@ -39,12 +40,24 @@ class Home extends React.Component {
     this.processWeekBoxesAnimationState();
   }
 
-  addOneDayToWeatherDataState(oneDayData) {
-    const newWeatherDataState = [].concat(this.state.weatherData);
+  addOneDayToWeatherDataState(oneDayData, dayNum) {
+    let newWeatherDataState = [].concat(this.state.weatherData);
     newWeatherDataState.push(oneDayData);
+
+    newWeatherDataState.sort((a, b) => a.rawDate - b.rawDate);
+    
+    newWeatherDataState = this.reorderData(newWeatherDataState);
     this.setState({
       weatherData: [].concat(newWeatherDataState)
     });
+  }
+
+  reorderData(arrayData) {
+    let sortedArray = [].concat(arrayData);
+    _.sortBy(sortedArray, (o) => {
+      return o.rawDate;
+    });
+    return sortedArray;
   }
 
   processWeekBoxesAnimationState() {
