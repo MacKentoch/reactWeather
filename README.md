@@ -33,8 +33,7 @@ Using this service: http://wxdata.weather.com/wxdata/weather/local/UKXX0085?cc=*
  - elastic search  (*I used v2.3.0*)
 
 
-
- **2. Then, just install all packages by:**
+**2. Then, just install all packages by:**
 
  ```bash
 npm install
