@@ -39,13 +39,13 @@ Using this service: http://wxdata.weather.com/wxdata/weather/local/UKXX0085?cc=*
 npm install
  ```
 
-**3.b launch database**
+**3.a launch database**
 
 ```bash
 bin/elasticsearch
 ```
 
-**3.a launch application server:**
+**3.b launch application server:**
 
 ```bash
 npm run serve
