@@ -33,13 +33,20 @@ Using this service: http://wxdata.weather.com/wxdata/weather/local/UKXX0085?cc=*
  - elastic search  (*I used v2.3.0*)
 
 
+
  **2. Then, just install all packages by:**
 
  ```bash
 npm install
  ```
 
-**3. launch server:**
+**3.b launch database**
+
+```bash
+bin/elasticsearch
+```
+
+**3.a launch application server:**
 
 ```bash
 npm run serve
