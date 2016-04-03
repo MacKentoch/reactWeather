@@ -49,6 +49,8 @@ npm run serve
  - `http://localhost:3000/`
 
 
+![preview](https://raw.githubusercontent.com/MacKentoch/reactWeather/master/app-previous.gif)
+
 _INFO : elasticsearch server is connected to :_
 - `http://localhost:9200/`
 
